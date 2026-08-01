@@ -19,6 +19,10 @@
 
 html { scroll-behavior: smooth; }
 
+section[id], .section[id], .hero[id] {
+  scroll-margin-top: 112px;
+}
+
 body {
   font-family: 'Nunito Sans', 'Segoe UI', Arial, sans-serif;
   color: var(--dark);
