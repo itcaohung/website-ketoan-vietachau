@@ -16,6 +16,16 @@ document.addEventListener('DOMContentLoaded', function () {
     link.addEventListener('click', closeNav);
   });
 
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    });
+  });
+
   var navLinks = mainNav.querySelectorAll('a[href^="#"]');
   var sections = [];
   navLinks.forEach(function (link) {
