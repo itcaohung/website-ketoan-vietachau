@@ -18,10 +18,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
-      var target = document.querySelector(link.getAttribute('href'));
+      var hash = link.getAttribute('href');
+      var target = document.querySelector(hash);
       if (!target) return;
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth' });
+      if (hash === '#home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
       history.replaceState(null, '', window.location.pathname + window.location.search);
     });
   });
